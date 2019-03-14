@@ -55,7 +55,7 @@ def cluster_features(img_descs, cluster_model):
 
 
 
-orb = cv2.ORB_create(nfeatures=100) 
+orb = cv2.ORB_create(nfeatures=500) 
 map_ = ['A','B','C','D','del','E','F','G','H','I','J','K','L','M','N','nothing','O','P','Q','R','S','space','T','U','V','W','X','Y','Z']
 
 '''
@@ -77,7 +77,7 @@ for alpha in map_:
     label = map_.index(alpha)
     img_descs=[]
     img_links= []
-    for imgs in glob.glob('../asl_alphabet_train/asl_alphabet_train/'+alpha+'/*.jpg'):
+    for imgs in glob.glob('../../../asl_alphabet_train/asl_alphabet_train/'+alpha+'/*.jpg'):
         i+=1
         
         img = cv2.imread(imgs,0)
