@@ -58,16 +58,27 @@ def cluster_features(img_descs, cluster_model):
 orb = cv2.ORB_create(nfeatures=500) 
 map_ = ['A','B','C','D','del','E','F','G','H','I','J','K','L','M','N','nothing','O','P','Q','R','S','space','T','U','V','W','X','Y','Z']
 
-'''
 
-img = cv2.imread('../asl_alphabet_train/asl_alphabet_train/I/I2213.jpg',0)
+img = cv2.imread('../../../asl_alphabet_train/asl_alphabet_train/C/C4.jpg',0)
 #img = cv2.imread('simple.jpg',0)
+
+
+f = plt.figure()
+f.add_subplot(1,2, 1)
+
 edges = cv2.Canny(img,100,200)
+plt.imshow(edges)
+cv2.imwrite("c4edges.jpg",edges)
 kp,des = orb.detectAndCompute(edges,None)
 img2 = cv2.drawKeypoints(img,kp,None, flags=0)
-plt.imshow(img2)
-'''
 
+f.add_subplot(1,2, 2)
+
+plt.imshow(img2)
+cv2.imwrite("descc4.jpg", img2)
+plt.show(block=True)
+
+'''
 
 start = time.time()
 
@@ -102,6 +113,7 @@ for alpha in map_:
 
 #Skin masking
 '''
+'''
 converted2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 converted = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) # Convert from RGB to HSV
     #cv2.imshow("original",converted2)
@@ -116,4 +128,7 @@ skinMask = cv2.medianBlur(skinMask, 5)
     
 skin = cv2.bitwise_and(converted2, converted2, mask = skinMask)
 '''
+
+
+
 
